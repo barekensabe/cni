@@ -40,8 +40,7 @@
 
                         <?=$this->session->flashdata('message')?> 
                         
-
-                            
+     
                     <div class="col-md-12 jumbotron" style="padding: 5px">  
                        <div class="table-responsive">                                                   
                         <?php echo $this->table->generate($user_list); ?>

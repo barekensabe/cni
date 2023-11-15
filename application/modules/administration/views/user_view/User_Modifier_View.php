@@ -66,8 +66,8 @@
 
             <!-- Page Content -->
             <?php 
-              $projet1 = '';
-              $projet2 = 'active';
+              $new = 'active';
+              $list = '';
             ?>
             <div id="page-wrapper">
                <div class="container-fluid">
@@ -78,10 +78,10 @@
                              </div>
                             <div class="row" id="conta" style="margin-top: -10px">
                                  <div class="col-lg-6 col-md-6">                                  
-                                   <h4 class=""><b>Modification du Projet <?php echo $DESCR_PROJET ?></b></h4>
+                                   <h4 class=""><b>Modification d'un utilisateur</b></h4>
                                 </div>
                                 <div class="col-lg-6 col-md-6" style="padding-bottom: 3px">
-                                    <?php include 'includes/sous_menu_projet.php' ?> 
+                                    <?php include 'includes/sous_menu_user.php' ?> 
                                 </div>
                             </div>  
                         </div>
@@ -90,66 +90,69 @@
                             
                     <div class="row jumbotron" style="padding: 5px">  
 
-                            <form   name="myform" method="post" class="form-horizontal" action="<?= base_url('cra/Projet/modifier_projet'); ?>">
+                            <form   name="myform" method="post" class="form-horizontal" action="<?= base_url('index.php/administration/Users/update'); ?>">
+                            <input type="hidden" name="CONNEXION_ID" value="<?=$datas['CONNEXION_ID']?>">
                         
                             <div class="form-group">
-                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Description</label>
-
+                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Nom</label>
                                 <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
-                                <input type="hidden" name="STATUT"  value="<?=$STATUT ?>"> 
-                                    <input type="hidden" name="ID_PROJET"  value="<?=$ID_PROJET ?>">
-
-                                    <input type="text" autofocus name="DESCR_PROJET"  value="<?php echo !empty($DESCR_PROJET) ? $DESCR_PROJET : ''; ?>" class="form-control">
-                                    <span class="error"><?php echo form_error('DESCR_PROJET'); ?></span> 
-
-                                    
+                                    <input type="text" autofocus name="NOM"  value="<?php echo !empty($datas['NOM']) ? $datas['NOM'] : ''; ?>" class="form-control"> 
+                                    <span class="error"><?php echo form_error('NOM'); ?></span> 
                                 </div>
                             </div>
 
-                           
-                            <div class="form-group">
-                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Date début</label>
-                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
-                                    <input type="text" id="datedebut"  name="DATE_DEBUT"  value="<?php echo!empty($DATE_DEBUT) ? $DATE_DEBUT : date('Y-m-d'); ?>" required="required" class="form-control"> 
-                                     <span class="error"><?php echo form_error('DATE_DEBUT'); ?></span>   
-                                </div>
 
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Prenom</label>
+                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
+                                    <input type="text" autofocus name="PRENOM"  value="<?php echo !empty($datas['PRENOM']) ? $datas['PRENOM'] : ''; ?>" class="form-control"> 
+                                        <span class="error"><?php echo form_error('PRENOM'); ?></span> 
+                                </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Date fin prevue</label>
-                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
-                                    <input type="text" id="datefin" name="DATE_FIN" value="<?php echo!empty($DATE_FIN) ? $DATE_FIN : date('Y-m-d'); ?>" required="required"  class="form-control">
-                                      <span class="error" id="dateerror"><?php echo form_error('DATE_FIN'); ?></span>   
-                                </div>
 
+
+
+                        
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">E-mail</label>
+                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
+                                    <input type="email" autofocus name="EMAIL"  value="<?php echo !empty($datas['EMAIL']) ? $datas['EMAIL'] : ''; ?>" class="form-control"> 
+                                        <span class="error"><?php echo form_error('EMAIL'); ?></span> 
+                                </div>
                             </div>
-                            
-                            <!-- <div class="form-group">
-                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Nb heures prévues</label>
-                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
-                                     <input type="number" min="1" step="0.01" name="NB_HEURES_PREVUES" value="<?php echo!empty($NB_HEURES_PREVUES) ? number_format($NB_HEURES_PREVUES, '1') : ''; ?>"  class="form-control">
-                                            <span class="error"><?php echo form_error('NB_HEURES_PREVUES'); ?></span>  
-                                </div>
 
-                            </div> -->
+
+                            <div class="form-group">
+                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Téléphone</label>
+                                <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
+                                    <input type="number" autofocus name="TEL"  value="<?php echo !empty($datas['TEL']) ? $datas['TEL'] : ''; ?>" class="form-control"> 
+                                        <span class="error"><?php echo form_error('TEL'); ?></span> 
+                                </div>
+                            </div>
+
+           
                             
                             <div class="form-group">
-                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Responsable</label>
+                                <label class="col-md-4 col-sm-12 col-xs-12 control-label">Profil</label>
                                 <div class="col-md-5 col-sm-12 col-xs-12 col-md-push-1">
-                                <select class="form-control" name="ID_COLLABO_RESPONSABLE">
+                                <select class="form-control" name="PROFIL_ID">
                                     <option value=""> - Sélectionner - </option>
                                     <?php
-                                      foreach ($collabos as $collabo) {
-                                     
+                                      foreach ($profiles as $profile) {
+                                        if ($datas['PROFIL_ID'] ==$profile['PROFIL_ID'])
+                                     {
                                         ?>
-                                         <option value="<?=$collabo['EMPLOYE_ID']?>"><?=$collabo['EMPLOYE_PRENOM'].' '.$collabo['EMPLOYE_NOM']?></option>
+                                         <option value="<?=$profile['PROFIL_ID']?>" selected><?=$profile['DESC_PROFIL']?></option>
 
                                         <?php
                                       }
+                                      else{ ?>
+                                    <option value="<?=$profile['PROFIL_ID']?>" ><?=$profile['DESC_PROFIL']?></option>
+
+                                      <?php } }
                                         ?>
                                 </select> 
-                                 <span class="error" id="dateerror"><?php echo form_error('ID_COLLABO_RESPONSABLE'); ?></span>                             
+                                 <span class="error" id="dateerror"><?php echo form_error('PROFIL_ID'); ?></span>                             
 
                             </div>
                            
