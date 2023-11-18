@@ -68,7 +68,7 @@ class Users extends CI_Controller {
     //FONCTION POUR LISTER TOUS LES UTILISATEURS
     function liste(){
 
-        $users = $this->Model->getRequete('SELECT CONNEXION_ID,adm_users.NOM,adm_users.PRENOM,adm_users.TEL,adm_users.EMAIL,adm_profiles.DESC_PROFIL FROM `adm_users` JOIN adm_profiles ON adm_profiles.PROFIL_ID=adm_users.PROFIL_ID WHERE 1');
+        $users = $this->Model->getRequete('SELECT CONNEXION_ID,adm_users.NOM,adm_users.PRENOM,adm_users.TEL,adm_users.EMAIL,adm_profiles.DESC_PROFIL FROM `adm_users` LEFT JOIN adm_profiles ON adm_profiles.PROFIL_ID=adm_users.PROFIL_ID WHERE 1');
 
         $user_list = array();
         foreach ($users as $user) {

@@ -106,7 +106,7 @@
                     <ul class="nav">
 
                       
-
+                    <?php if($this->session->userdata('ADMINISTRATION')==1){?>
 
                                         <li>
                                             <a href="#" id="men"><i class="fa fa-group fa-fw"></i> Administration <span class="fa arrow"></span></a>
@@ -127,8 +127,7 @@
                                             </ul>
                                             <!-- /.nav-second-level -->
                                         </li>
-
-
+                                  <?php } if ($this->session->userdata('BI')==1) { ?>
 
                                         <li>
                                             <a href="#" id="men"><i class="fa fa-tasks fa-fw"></i>BI<span class="fa arrow"></span></a>
@@ -143,12 +142,10 @@
                                             <!-- /.nav-second-level -->
                                         </li>
 
-
-
-
+                                        <?php } if ($this->session->userdata('IHM')==1) {?>
 
                                         <li>
-                                            <a href="#" id="men"><i class="fa fa-tasks fa-fw"></i> Gestion CNI<span class="fa arrow"></span></a>
+                                            <a href="#" id="men"><i class="fa fa-tasks fa-fw"></i>IHM<span class="fa arrow"></span></a>
                                             <ul class="nav nav-second-level">
                                                 
                                                  <li>
@@ -159,6 +156,8 @@
                                             </ul>
                                             <!-- /.nav-second-level -->
                                         </li>
+
+                                        <?php } ?>
 
                 
                                                  

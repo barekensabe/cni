@@ -137,6 +137,72 @@
 
 
 
+	    //FONCTION POUR AFFICHER LES INFOS D'UN PROFIL A MODIFIER
+		function getone($PROFIL_ID) {
+			$this->make_bread->add('Modification profil', "Profils", 1);
+			$data['breadcrumb'] = $this->make_bread->output();
+			$data['datas']=$this->Model->getRequeteOne('SELECT * FROM `adm_profiles` WHERE PROFIL_ID='.$PROFIL_ID);
+			$this->load->view('user_view/Profil_Modifier_View', $data);
+		}
+
+
+
+			//FUNCTION POUR MODIFIER UN PROFIL
+		function update()
+			{
+		  
+		$this->form_validation->set_rules('DESC_PROFIL','Profil Description','trim|required');
+		  
+		 if($this->form_validation->run()==true)
+		  
+			{
+				
+			   if($this->input->post('ADMINISTRATION') != null)
+				 { $ADMINISTRATION= 1;}else{ $ADMINISTRATION= 0; }
+		  
+			   if($this->input->post('BI') != null)
+				 { $BI= 1;}else{ $BI= 0; }
+
+			   if($this->input->post('IHM') != null)
+				 { $IHM= 1;}else{ $IHM= 0; }
+			  
+			  $DESC_PROFIL=$this->input->post('DESC_PROFIL');
+			  $PROFIL_ID=$this->input->post('PROFIL_ID');
+			   
+		  
+					$datadroit= array('DESC_PROFIL'=>$DESC_PROFIL,
+									  'ADMINISTRATION'=>$ADMINISTRATION,
+									  'BI'=>$BI,
+									  'IHM'=>$IHM);
+									
+				    $idprofile= $this->Model->update("adm_profiles",array('PROFIL_ID'=>$PROFIL_ID),$datadroit);
+					$data['message'] = "<div class='alert alert-success'>Modification d'un profils et droits fait avec succes</div>";
+
+				  
+			$this->session->set_flashdata($data);
+			redirect(base_url('index.php/administration/Profils/liste'));
+			}
+			else
+			{
+				$this->make_bread->add('Nouveau poste', "administration/Profils", 0);
+        		 
+				$data['breadcrumb'] = $this->make_bread->output();
+	
+			   $this->load->view('user_view/Profil_Add_View',$data);	
+			}
+
+			}
+
+
+
+		    //FONCTION POUR SUPPRIMER LES INFOS D'UN UTILISATEUR A MODIFIER
+			function delete($PROFIL_ID) {
+				$this->Model->delete('adm_profiles', array('PROFIL_ID' => $PROFIL_ID));
+				$data['message'] = "<div class='alert alert-success'>Suppression fait avec succes</div>";
+				$this->session->set_flashdata($data);
+				redirect(base_url('index.php/administration/Profils/liste'));
+			}
+
 
 
 

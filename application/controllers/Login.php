@@ -32,6 +32,8 @@ class Login extends CI_Controller {
             
             if ($user['PASSWORD'] == md5($password))
 			{
+
+                $droits= $this->Model->getOne('adm_profiles',array('PROFIL_ID'=>$user['PROFIL_ID']));
            
                 $session = array(
 	                    'NOM' => $user['NOM'],
@@ -39,7 +41,10 @@ class Login extends CI_Controller {
                         'TEL'=>$user['TEL'],
                         'LOGIN'=>$user['EMAIL'],
                         'PROFIL_ID'=>$user['PROFIL_ID'],
-                        'CONNEXION_ID'=>$user['CONNEXION_ID']
+                        'CONNEXION_ID'=>$user['CONNEXION_ID'],
+                        'ADMINISTRATION'=>$droits['ADMINISTRATION'],
+                        'BI'=>$droits['BI'],
+                        'IHM'=>$droits['IHM'],
 	               );
                 
 
@@ -66,7 +71,10 @@ class Login extends CI_Controller {
                         'TEL'=>NULL,
                         'LOGIN'=>NULL,
                         'PROFIL_ID'=>NULL,
-                        'CONNEXION_ID'=>NULL
+                        'CONNEXION_ID'=>NULL,
+                        'ADMINISTRATION'=>NULL,
+                        'IHM'=>NULL,
+                        'BI'=>NULL
 		                );
 
 		        $this->session->set_userdata($session);
