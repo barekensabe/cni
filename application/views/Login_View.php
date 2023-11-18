@@ -11,7 +11,7 @@
     
 
         <div class="container-fluid" id="header">
-            <img src="<?php echo base_url() ?>upload/banderole/grandlogo.jpg" width="100%" height="120" alt="logo" /> 
+            <img src="<?php echo base_url() ?>upload/banderole/logo.jpeg" width="100%" height="120" alt="logo" /> 
         </div>
         <div class="col-lg-4 col-md-3">
 

@@ -5,53 +5,7 @@
 <head>
 <?php include VIEWPATH.'includes/header.php' ?>
 </head>
-        <script>
-            $(function () {
-                $("#datedebut").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    format: 'yyyy-mm-dd',
-                    startDate:'0',
-                    minDate: new Date(),
-                    todayHighlight: true,
-                    autoclose: true
-                });
 
-                $("#datefin").datepicker({
-                    changeMonth: true,
-                    changeYear: true,
-                    format: 'yyyy-mm-dd',
-                    startDate:'0',
-                    minDate: new Date(),
-                    todayHighlight: true,
-                    autoclose: true
-                });
-            });
-
-
-        </script>
-        <script language="javascript" type="text/javascript">
-            function validerTousLesChamps() {
-                
-                var datedebut = document.getElementById('datedebut').value;
-                var datefin = document.getElementById('datefin').value;
-                var fin = new Date(datefin);
-                var debut = new Date(datedebut);
-
-                if (debut > fin)
-                {
-                    alert('La date debut ne doit pas etre postérieure à la date fin prévue');
-                    //            document.getElementById('dateerror').innerHTML = '<font class=" alert-danger">La date debut ne doit pas etre postérieure à la date fin prévue</font>';
-                    return false;
-                }
-                else
-                {
-
-                    return true;
-                }
-
-            }
-        </script>
 
     </head>
 <body>

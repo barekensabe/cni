@@ -21,6 +21,29 @@ class Model extends CI_Model{
         }
       }
 
+      public function datatable($requete)//make_datatables : requete avec Condition,LIMIT start,length
+      { 
+             $query =$this->maker($requete);//call function make query
+             return $query->result();
+           }  
+         public function maker($requete)//make query
+         {
+           return $this->db->query($requete);
+         }
+     
+         public function all_data($requete)//count_all_data : requete sans Condition sans LIMIT start,length
+         {
+            $query =$this->maker($requete); //call function make query
+            return $query->num_rows();   
+          }
+          public function filtrer($requete)//get_filtered_data : requete avec Condition sans LIMIT start,length
+          {
+              $query =$this->maker($requete);//call function make query
+              return $query->num_rows();
+              
+            }
+    
+
 	function create($table, $data) {
 
         $query = $this->db->insert($table, $data);

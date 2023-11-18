@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="<?= base_url() ?>upload/banderole/petitlogo.jpg" style="width:250px;height: 67px "/>
+                <img src="<?= base_url() ?>upload/banderole/logo.jpeg" style="width:250px;height: 67px "/>
                 
                 <!-- <img src="img/expertise.jpg" style="width: 100px;height: 70px"> -->
                 
@@ -115,18 +115,37 @@
 
                                                 
                                                 <li>
-                                                    <a href="<?php echo base_url('index.php/administration/Users/liste') ?>" id="act">Utilisateurs </a>
+                                                    <a href="<?php echo base_url('index.php/administration/Users/liste') ?>" id="user">Utilisateurs </a>
                                                 </li>
 
                                                  
                                                 
                                                 <li>
-                                                    <a href="#" id="act"> Profils et droits </a>
+                                                    <a href="<?php echo base_url('index.php/administration/Profils/index') ?>" id="pro"> Profils et droits </a>
                                                 </li>
                                                 
                                             </ul>
                                             <!-- /.nav-second-level -->
                                         </li>
+
+
+
+                                        <li>
+                                            <a href="#" id="men"><i class="fa fa-tasks fa-fw"></i>BI<span class="fa arrow"></span></a>
+                                            <ul class="nav nav-second-level">
+                                                
+                                                 <li>
+                                                    <a href="<?php echo base_url('index.php/dashboard/Dashboard_General_Citoyen') ?>" id="dash">Dashboard citoyen</a>
+                                                </li>
+    
+                                                
+                                            </ul>
+                                            <!-- /.nav-second-level -->
+                                        </li>
+
+
+
+
 
                                         <li>
                                             <a href="#" id="men"><i class="fa fa-tasks fa-fw"></i> Gestion CNI<span class="fa arrow"></span></a>

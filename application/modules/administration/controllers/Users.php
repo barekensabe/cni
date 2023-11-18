@@ -58,7 +58,8 @@ class Users extends CI_Controller {
 
             $user_id = $this->Model->insert_last_id('adm_users', $donnee);
  
-            $data['message'] = "<div class='alert alert-danger'>Enregistrement fait avec succes</div>";
+            $data['message'] = "<div class='alert alert-success'>Enregistrement fait avec succes</div>";
+            $this->session->set_flashdata($data);
             redirect(base_url('index.php/administration/Users/liste'));
         }
     }
@@ -162,7 +163,8 @@ class Users extends CI_Controller {
 
         $this->Model->update('adm_users', array('CONNEXION_ID' => $CONNEXION_ID), $donnee);
 
-        $data['message'] = "<div class='alert alert-danger'>Modification fait avec succes</div>";
+        $data['message'] = "<div class='alert alert-success'>Modification fait avec succes</div>";
+        $this->session->set_flashdata($data);
         redirect(base_url('index.php/administration/Users/liste'));
     }
 }
@@ -171,7 +173,8 @@ class Users extends CI_Controller {
     //FONCTION POUR SUPPRIMER LES INFOS D'UN UTILISATEUR A MODIFIER
     function delete($CONNEXION_ID) {
         $this->Model->delete('adm_users', array('CONNEXION_ID' => $CONNEXION_ID));
-        $data['message'] = "<div class='alert alert-danger'>Suppression fait avec succes</div>";
+        $data['message'] = "<div class='alert alert-success'>Suppression fait avec succes</div>";
+        $this->session->set_flashdata($data);
         redirect(base_url('index.php/administration/Users/liste'));
     }
 
